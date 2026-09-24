@@ -1,23 +1,23 @@
 import type { Experience } from "./types";
 
-// TODO: reemplazar con tu experiencia real.
+// TODO: confirmar períodos y agregar experiencia laboral formal si la hay.
 export const experience: Experience[] = [
   {
-    company: "Empresa Actual",
-    role: "Full-Stack Developer",
+    company: "Proyectos para clientes",
+    role: "Desarrollador Full Stack",
     period: "2024 — Actualidad",
     achievements: [
-      "Diseñé e implementé APIs REST con autenticación JWT/RBAC.",
-      "Automaticé procesos internos con n8n e IA generativa.",
+      "Sistema de pedidos y cadetería con despacho automático y pagos para un restaurante (Next.js, Prisma, Neon).",
+      "Sistema de gestión para un taller de motos con auth segura y roles (React, Express, PostgreSQL).",
+      "Landings y e-commerce para comercios locales, desplegados en Vercel.",
     ],
   },
   {
-    company: "Empresa Anterior",
-    role: "Backend Developer",
-    period: "2022 — 2024",
+    company: "Formación",
+    role: "Estudiante de Análisis de Sistemas",
+    period: "En curso",
     achievements: [
-      "Desarrollé microservicios en Spring Boot sobre MySQL.",
-      "Empaqueté servicios en contenedores Docker y configuré Nginx como reverse proxy.",
+      "Desarrollo backend con Python/Flask y Java, modelado de bases de datos y desarrollo móvil Android.",
     ],
   },
 ];

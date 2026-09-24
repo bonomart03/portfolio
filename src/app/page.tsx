@@ -64,7 +64,7 @@ export default function Home() {
         </ul>
       </Section>
 
-      <Section id="experiencia" eyebrow="03" title="Experiencia">
+      <Section id="experiencia" eyebrow="03" title="Experiencia y formación">
         <ol className="space-y-8 border-l border-border pl-6">
           {experience.map((job) => (
             <li key={`${job.company}-${job.period}`} className="relative">

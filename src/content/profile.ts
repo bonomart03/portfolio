@@ -10,28 +10,24 @@ function resolveSiteUrl(env: NodeJS.ProcessEnv = process.env): string {
   return "http://localhost:3000";
 }
 
-// TODO: reemplazar con tus datos reales.
 export const profile: Profile = {
-  name: "Tu Nombre",
-  role: "Full-Stack Software Engineer",
+  name: "Bono Martinez",
+  role: "Desarrollador Full Stack",
   headline:
-    "Construyo productos web de punta a punta: APIs seguras, interfaces rápidas y automatizaciones con IA.",
+    "Desarrollo sistemas web completos para negocios reales: APIs seguras, bases de datos bien modeladas y automatizaciones con IA.",
   about: [
-    "Soy ingeniero de software full-stack con experiencia diseñando y operando aplicaciones en producción con Python/Flask, Node.js/TypeScript, Java/Spring Boot y React.",
-    "Me enfoco en arquitecturas mantenibles, seguridad desde el diseño (JWT/RBAC, validación de inputs) y en automatizar procesos con n8n e IA generativa.",
+    "Soy desarrollador full stack y estudiante de Análisis de Sistemas en Buenos Aires. Mi foco está en el backend (Python/Flask, Node.js, Java/Spring Boot) y en las bases de datos, sin descuidar el frontend con React y Next.js.",
+    "Construyo sistemas que usan comercios reales: pedidos y cadetería para un restaurante, gestión para un taller de motos, e-commerce y landings. También desarrollo agentes y herramientas con IA generativa, y apps móviles en Java y Kotlin.",
   ],
-  location: "Argentina · Remoto",
-  socials: [
-    { label: "GitHub", href: "https://github.com/tu-usuario" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/tu-usuario" },
-  ],
+  location: "Buenos Aires, Argentina",
+  socials: [{ label: "GitHub", href: "https://github.com/bonomart03" }],
   siteUrl: resolveSiteUrl(),
 };
 
 export const skills: SkillGroup[] = [
-  { category: "Backend", items: ["Python / Flask", "Node.js / TypeScript", "Java / Spring Boot", "REST APIs"] },
-  { category: "Frontend", items: ["React 19", "Next.js", "Tailwind CSS", "Accesibilidad"] },
-  { category: "Datos", items: ["PostgreSQL", "MySQL", "SQLite", "Modelado relacional"] },
-  { category: "DevOps", items: ["Docker", "Nginx", "Vercel", "Cloudflare", "JWT / RBAC"] },
-  { category: "IA & Automatización", items: ["IA generativa", "n8n", "Integración de LLMs"] },
+  { category: "Backend", items: ["Python / Flask", "FastAPI", "Node.js / Express", "Java / Spring Boot"] },
+  { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "PWA"] },
+  { category: "Datos", items: ["PostgreSQL", "MySQL", "SQLite", "Prisma", "SQLAlchemy"] },
+  { category: "DevOps", items: ["Vercel", "Render", "Docker", "JWT / RBAC"] },
+  { category: "IA & Automatización", items: ["LangGraph", "Integración de LLMs", "Scraping", "n8n"] },
 ];
