@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+Portfolio personal en **Next.js 16** (App Router, TypeScript, Tailwind CSS v4), listo para desplegar en **Vercel**.
 
-First, run the development server:
+## Scripts
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+| Comando | Descripción |
+| --- | --- |
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción |
+| `npm test` | Tests unitarios (Jest + Testing Library) |
+| `npm run test:coverage` | Tests con cobertura |
+| `npm run typecheck` / `npm run lint` | Chequeo de tipos / ESLint |
+
+## Editar contenido
+
+Todo el contenido vive en `src/content/` como datos tipados:
+
+- `profile.ts`: nombre, rol, bio, redes y skills
+- `projects.ts`: proyectos (cada uno genera `/projects/<slug>` en build)
+- `experience.ts`: experiencia laboral
+
+## Arquitectura
+
+```
+src/
+├── app/                  # Rutas (Server Components, SSG)
+│   ├── actions/contact.ts   # Server Action (wrapper delgado)
+│   ├── projects/[slug]/     # Detalle de proyecto (generateStaticParams)
+│   └── sitemap.ts, robots.ts, opengraph-image.tsx
+├── components/           # UI; solo contact-form.tsx es Client Component
+├── content/              # Datos editables + tipos
+└── lib/
+    ├── projects.ts          # Capa de acceso a proyectos
+    └── contact/             # Validación (Zod), manejo y entrega del formulario
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Formulario de contacto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Validación en servidor con Zod, honeypot anti-spam y entrega vía `ContactNotifier`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Con `CONTACT_WEBHOOK_URL` → POST JSON al webhook (ideal para un workflow de **n8n** que reenvíe por email/Slack).
+- Sin configurar → se registra en consola (útil en desarrollo).
 
-## Learn More
+Ver `.env.example`.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy en Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Subí el repo a GitHub e importalo en [vercel.com/new](https://vercel.com/new), **o** usá la CLI: `npm i -g vercel && vercel`.
+2. Configurá las variables de entorno (`CONTACT_WEBHOOK_URL`, `CONTACT_WEBHOOK_SECRET`) en el proyecto de Vercel.
+3. `vercel --prod` (o push a `main`) para publicar en producción.
